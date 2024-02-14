@@ -13,11 +13,9 @@ pUpdate = 0
 # list for all the object
 datas = []
 
-kori = DPR(2, "kori", "bidang", "pdip")
-print(kori.getName())
-
+id = 0
 for i in range(n):
-    id = i + 1
+    id = id + 1
     nama = str(input("Nama: "))
     bidang = str(input("Bidang: "))
     partai = str(input("Partai: "))
@@ -39,7 +37,7 @@ while pilihan != 5:
 
     if pilihan == 1:
         print("Masukan data baru")
-        id = i + 1
+        id = id + 1
         nama = str(input("Nama: "))
         bidang = str(input("Bidang: "))
         partai = str(input("Partai: "))
