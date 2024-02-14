@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    int stop = 0;
+    int stop = 0; // penanda stop
     char pUpdate;
     cout << "Berapa banyak data : ";
     int n, i;
@@ -14,11 +14,15 @@ int main()
     int cariID;
     string nama, bidang, partai;
 
+    // list objek
     list<DPR> llist;
+    // iterator yang asalnya dari isi list
     list<DPR>::iterator count = llist.begin();
 
     // create
-    DPR temp;
+
+    DPR temp; // penampung sementara data
+
     for (i = 0; i < n; i++)
     {
         cout << "Nama : ";
@@ -28,17 +32,21 @@ int main()
         cout << "Nama Partai : ";
         cin >> partai;
 
+        // memasukan data data atribut menggunakan setter
         temp.setID(ID);
         ID++;
         temp.setNama(nama);
         temp.setBidang(bidang);
         temp.setPartai(partai);
 
+        // masukan ke list
         llist.push_back(temp);
     }
 
     // menu
     int pilihan = 0;
+
+    // dilakukan sampai user minta udahan
     do
     {
         cout << "MENU" << '\n'
@@ -52,7 +60,8 @@ int main()
         cin >> pilihan;
         switch (pilihan)
         {
-        case 1:
+
+        case 1: // TAMBAH DATA
 
             cout << "Masukan nama: " << endl;
             cin >> nama;
@@ -70,38 +79,40 @@ int main()
             llist.push_back(temp);
             cout << "Berhasil memasukan data baru!";
             break;
-        case 2:
-            // update
+        case 2: // UBAH DATA
 
             cout << "ID yang mau diupdate: ";
             cin >> cariID;
             stop = 0;
-            count = llist.begin();
+            count = llist.begin(); // iterator counter untuk jadi pointer pas searching
+
             while (count != llist.end() && stop != 1)
             {
-                if (count->getID() == cariID)
+                if (count->getID() == cariID) // kalo ketemu IDnya
                 {
+                    // dikasi pilihan apa yang mau di ubahnya
                     cout << "apa yang mau di ubah: "
                          << '\n';
                     cout << "a. nama" << endl;
                     cout << "b. bidang" << endl;
                     cout << "c. partai" << endl;
                     cin >> pUpdate;
+
                     switch (pUpdate)
                     {
-                    case 'a':
+                    case 'a': // nama
                         cout << "Masukan nama baru: ";
                         cin >> nama;
                         count->setNama(nama);
                         cout << "Update nama berhasil!" << endl;
                         break;
-                    case 'b':
+                    case 'b': // bidang
                         cout << "Masukan bidang baru: ";
                         cin >> bidang;
                         count->setBidang(bidang);
                         cout << "Update bidang berhasil!" << endl;
                         break;
-                    case 'c':
+                    case 'c': // partai
                         cout << "Masukan partai baru: ";
                         cin >> partai;
                         count->setPartai(partai);
@@ -121,7 +132,8 @@ int main()
             break;
 
         case 3:
-            // Delete
+            // DELETE
+            // mencari id yang mau di hapus terus hapus
             cout << "Masukan id yang ingin di hapus : ";
             cin >> cariID;
             stop = 0;
@@ -143,6 +155,7 @@ int main()
 
             break;
         case 4:
+            // print
             cout << "===========================\n";
             cout << "| ID |    NAMA    |    BIDANG    |    PARTAI    |";
             cout << endl;

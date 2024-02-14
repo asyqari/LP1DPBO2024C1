@@ -7,12 +7,14 @@ using namespace std;
 class DPR
 {
 private:
+    // berisi atribut private karena ini data penting objeknya
     int dataID;
     string nama;
     string namaBidang;
     string namaPartai;
 
 public:
+    // construktor pertama yang isi nya defaul tanpa parameter atribut
     DPR()
     {
         this->dataID = -1;
@@ -20,7 +22,7 @@ public:
         this->namaBidang = "";
         this->namaPartai = "";
     }
-
+    // versi ada parameter atribut biar langsung duar jadi lengkap
     DPR(int dataID, string nama, string namaBidang, string namaPartai)
     {
         this->dataID = dataID;
@@ -32,6 +34,8 @@ public:
     // method create update, delete
 
     // getter setter
+    // ambil data dari private lalu return
+    // set atribut private dengan parameter
     int getID()
     {
         return this->dataID;
